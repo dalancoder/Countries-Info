@@ -8,7 +8,7 @@ const getCountry = async () => {
       throw new Error(res.status);
     }
     countries = await res.json();
-
+console.log(countries);
     renderCountry(countries[43]); //Türkiye 43 te oldugu için ordan baslasın
     findCountry();
   } catch (error) {
@@ -27,6 +27,7 @@ const renderCountry = (country) => {
     languages,
     currencies,
     borders,
+    maps:{googleMaps}
   } = country;
 
   const languageList = Object.values(languages).join(", ");
@@ -67,6 +68,8 @@ const renderCountry = (country) => {
             <i class="fa-sharp fa-solid fa-road-barrier"></i>
             <span class="fw-bold"> Borders:</span> ${borderList}
           </li>
+          <li class="list-group-item">
+              <i class="fa-solid fa-map-location-dot"></i><span class="fw-bold"> Map:</span> <a href="${googleMaps}" target='_blank'> Go to google map</a> </li>
         </ul>
     `;
   // Body arkaplan
